@@ -2,7 +2,32 @@
   <form class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Solo numerico</mat-label>
-      <input type="text" appNumberOnly appCurrencyMask maxlength="10" matInput placeholder="0" />
+      <input
+        type="text"
+        appNumberOnly
+        appCurrencyMask
+        simbolo="COP"
+        maxlength="10"
+        matInput
+        placeholder="0"
+      />
     </mat-form-field>
   </form>
+</mat-card>
+<!-- <mat-card>
+  <div *appCarousel="let item; from: iconos; autoplay: 'off'; let ctrl = controller">
+    <mat-icon>{{ item }}</mat-icon>
+    <button (click)="ctrl.prev()" mat-mini-fab color="primary">
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+    <button (click)="ctrl.next()" mat-mini-fab color="primary">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+  </div>
+</mat-card> -->
+
+<mat-card>
+  <div *ngFor="let item of iconos">
+    <mat-icon>{{ item }}</mat-icon>
+  </div>
 </mat-card>

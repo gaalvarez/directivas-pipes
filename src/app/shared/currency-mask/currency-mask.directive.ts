@@ -1,10 +1,13 @@
 import { CurrencyPipe } from '@angular/common';
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[appCurrencyMask]',
 })
 export class CurrencyMaskDirective {
+  @Input('simbolo')
+  simbolo = '$';
+
   private el: HTMLInputElement;
 
   constructor(private elementRef: ElementRef, private currencyPipe: CurrencyPipe) {
@@ -32,7 +35,7 @@ export class CurrencyMaskDirective {
   }
 
   transform(value: string): string {
-    return this.currencyPipe.transform(value, '', '$');
+    return this.currencyPipe.transform(value, '', this.simbolo);
   }
 
   parse(value: string): string {
