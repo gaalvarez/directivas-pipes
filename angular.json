@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "directivas-pipes"
+    }
+  },
+  "defaultProject": "directivas-pipes",
+  "cli": {
+    "analytics": false
+  }
 }
