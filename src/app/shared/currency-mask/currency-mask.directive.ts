@@ -12,8 +12,14 @@ export class CurrencyMaskDirective {
   }
 
   //remover todo menos el punto decimal si existe
-  @HostListener('focus', ['$event.target.value'])
-  onfocus(value) {}
+  @HostListener('focus', ['$event'])
+  onfocus(event) {
+    const valorInicial = this.el.value;
+    this.el.value = this.parse(this.el.value);
+    if (valorInicial !== this.el.value) {
+      event.stopPropagation();
+    }
+  }
 
   //darle formato: agregar separadores de mil y simbolo de pesos $
   @HostListener('blur', ['$event'])
@@ -30,6 +36,7 @@ export class CurrencyMaskDirective {
   }
 
   parse(value: string): string {
-    return value;
+    const [entero, fraccion] = value.split('.');
+    return `${entero.replace(/[^0-9]*/g, '')}`;
   }
 }
